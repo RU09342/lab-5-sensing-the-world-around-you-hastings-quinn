@@ -63,16 +63,18 @@ __interrupt void Timer0_A0_ISR(void)
 {
     uint16_t temp1 = ADC12MEM0 ;                //read the ADC buffer
     while(!(UCA0IFG&UCTXIFG));                  //TRANSMIT READY????
-    UCAOTXBUF = temp1;                          //Send over UART
     uint16_t temp2  = (uint8_t)(temp1 >> 4);    //get next Byte
     while(!(UCA0IFG&UCTXIFG));                  //TRANSMIT READY????
-    UCAOTXBUF = temp2;                          //Send over UART
     uint16_t temp3 = (uint8_t)(temp1 >> 8);     //get next Byte
     while(!(UCA0IFG&UCTXIFG));                  //TRANSMIT READY????
-    UCAOTXBUF = temp3;                          //Send over UART
+    
     temp1 = temp1 & 0x000F;                     //Keep byte 1 for digit 1
     temp2 = temp2 & 0x000F;                     //Keep byte 2 for digit 2
     temp3 = temp3 & 0x000F;                     //Keep byte 3 for digit 3
+
+    UCAOTXBUF = temp1;                          //Send over UART
+    UCAOTXBUF = temp2;                          //Send over UART
+    UCAOTXBUF = temp3;                          //Send over UART
     ADC12CTL0 |= ADC12ENC | ADC12SC;            // Sampling and conversion start
     if(temp1 < 0x0A) {                          //display correct ascii values 0-10
         temp1 = temp1 + '0';                    //display on LCD with respect to 0 in ascii
