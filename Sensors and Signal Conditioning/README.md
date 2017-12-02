@@ -18,15 +18,15 @@ To fully test the functionality of the hardware and software implemented in this
 
 Phototransistors emmit a current out of their collector pin based on the intensity of the light taken in. Below is the schematic of the circit used to convert current into a voltage to be read by the ADC of the MSP430G2553. It forces a positive voltage at the output of an Op-Amp that is valued as the current output of the phototransistor multiplied by the value of the feedback resistor. In the schematic shown below, the phototransistor is modeled as a constant current source, but in practice the collector of the phototransistor would be connected to ground, while the emitter is tied to inverting terminal of the Op-Amp.
 
-### Transimpedance amplifier modeled with current 10u and feedback resistance of 1M.
+### Transimpedance amplifier modeled with current 10uA and feedback resistance of 1M Ohms.
 ![alt text](https://github.com/RU09342/lab-5-sensing-the-world-around-you-hastings-quinn/blob/master/Sensors%20and%20Signal%20Conditioning/Current2VPNG.PNG)
 
 Photoresistors change their resistances based on the intensity of the light taken in. Below is a schematic showing its placement into a voltage divider for the purpose of scaling the output voltage as a function of the resistance of the photoresistor: Vo = Vin(R2/R2+R1); where R2 is the resistance of the photoresistor. The schematics below show examples of the photoresistor affecting at large and small values directly affecting the voltage output.
 
-### Photoresistor set to 1M to show low light intensity's effect on output voltage.
+### Photoresistor set to 1M Ohms to show low light intensity's effect on output voltage.
 ![alt text](https://github.com/RU09342/lab-5-sensing-the-world-around-you-hastings-quinn/blob/master/Sensors%20and%20Signal%20Conditioning/R2VVHigh.PNG)
 
-### Photoresistor set to 1m to show high light intensity's effect on output voltage.
+### Photoresistor set to 1m Ohms to show high light intensity's effect on output voltage.
 ![alt text](https://github.com/RU09342/lab-5-sensing-the-world-around-you-hastings-quinn/blob/master/Sensors%20and%20Signal%20Conditioning/R2VVLowPNG.PNG)
 
 As mentioned above, the photodiode can be modeled as a voltage source depending on the intensity of light it is exposed to. Within the schematic shown below, the voltage source at the output of the voltage divider represents the photodiode. It is fed a voltage divider of the 3.3v VCC to ensure that the output voltage of the photodiode is between 1.65 and 3.3, which is the input limit of the G2553. 
